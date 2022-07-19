@@ -213,7 +213,7 @@ public class TestEntity {
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/437d61ee38f848a6a1e1cf75e2f968b4.png)
 
 私服，服务器下载速度非常快，里面有演示demo![在这里插入图片描述](https://img-blog.csdnimg.cn/30c976ee0e5246ada5e93dbc3ca23acb.png)
-私服下载地址： http://47.103.194.1:8081/download/demo?fileName=ServiceDowngrade.zip
+私服下载地址： [http://47.103.194.1:8081/download/demo?fileName=ServiceDowngrade.zip](http://47.103.194.1:8081/download/demo?fileName=AutoData.zip)
 ## 3、执行反射方法生成SQL
 
 ```java
