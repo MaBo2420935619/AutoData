@@ -80,6 +80,12 @@ public class CreateSqlReflect {
                 else if (rule.equals(StringRule.TELNUMBER)){
                     appendS="'"+RandUtils.telNum()+"'";
                 }
+                else if (rule.equals(StringRule.IDCARD)){
+                    appendS="'"+RandUtils.idCard()+"'";
+                }
+                else if (rule.equals(StringRule.MAIL)){
+                    appendS="'"+RandUtils.mail()+"'";
+                }
                 else if (rule.equals(StringRule.METHOD)){
                     Class arrayClass = stringConfigure.aClass();
                     if (!arrayClass.equals(Class.class)){
