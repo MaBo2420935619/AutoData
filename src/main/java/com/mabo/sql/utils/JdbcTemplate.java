@@ -3,6 +3,7 @@ package com.mabo.sql.utils;
 import com.alibaba.druid.pool.DruidDataSource;
 
 import javax.sql.DataSource;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,9 +16,14 @@ public class JdbcTemplate {
     static DataSource dataSource= new DruidDataSource();
     static {
         try {
-            String url = "jdbc:mysql://localhost:3306/downloadsdk?useSSL=false&serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=UTF8&autoReconnect=true&failOverReadOnly=false";
-            String username="root";
-            String password="xxx";
+
+            Properties prop = new Properties();
+            ClassLoader classLoader1 = Thread.currentThread().getContextClassLoader();
+            InputStream resourceAsStream = classLoader1.getResourceAsStream("application.properties");
+            prop.load(resourceAsStream);
+            String url = prop.get("spring.datasource.url").toString();
+            String username = prop.get("spring.datasource.username").toString();
+            String password = prop.get("spring.datasource.password").toString();
             //2.创建数据源对象
             /*DataSource:是SUN公司声明的接口 。DruidDataSource：是阿里巴巴对应实现的类*/
             //3.设置属性
