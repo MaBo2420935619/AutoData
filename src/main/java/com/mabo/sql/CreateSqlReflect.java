@@ -46,7 +46,6 @@ public class CreateSqlReflect {
             }else {
                 sql=sql.append(fieldName+") values (");
             }
-
         }
         for (int i = 0; i < fields.length; i++) {
             Field field=fields[i];
@@ -67,26 +66,20 @@ public class CreateSqlReflect {
             }
             else if(stringConfigure!=null){
                 StringRule rule = stringConfigure.createRule();
-                if (rule.equals(StringRule.UUID)){
-                    String s = RandUtils.uuId();
-                    appendS="'"+s+"'";
+                if (!rule.equals(StringRule.METHOD)){
+
+                    Class<RandUtils> randUtilsClass = RandUtils.class;
+                    RandUtils randUtils = randUtilsClass.newInstance();
+                    Method[] declaredMethods = randUtilsClass.getDeclaredMethods();
+                    for (Method method : declaredMethods) {
+                        String name = method.getName();
+                        if (name.equals(rule.name())){
+                            Object invoke = method.invoke(randUtils);
+                            appendS="'"+invoke+"'";
+                        }
+                    }
                 }
-                else if (rule.equals(StringRule.UUID16)){
-                    appendS="'"+RandUtils.uuId16()+"'";
-                }
-                else if (rule.equals(StringRule.NAME)){
-                    appendS="'"+RandUtils.name()+"'";
-                }
-                else if (rule.equals(StringRule.TELNUMBER)){
-                    appendS="'"+RandUtils.telNum()+"'";
-                }
-                else if (rule.equals(StringRule.IDCARD)){
-                    appendS="'"+RandUtils.idCard()+"'";
-                }
-                else if (rule.equals(StringRule.MAIL)){
-                    appendS="'"+RandUtils.mail()+"'";
-                }
-                else if (rule.equals(StringRule.METHOD)){
+                else {
                     Class arrayClass = stringConfigure.aClass();
                     if (!arrayClass.equals(Class.class)){
                         aClass=arrayClass;

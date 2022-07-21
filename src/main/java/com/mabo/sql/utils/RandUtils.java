@@ -30,14 +30,14 @@ public class RandUtils {
      * @Description : UUID
      * @Author : mabo
      */
-    public static String uuId(){
+    public static String UUID(){
         return UUID.randomUUID().toString();
     }
     /**
      * @Description : UUID
      * @Author : mabo
      */
-    public static String uuId16(){
+    public static String UUID16(){
         // 1.最大支持1-9个集群机器部署
         int machineId = 1;
         // 2.生成uuid的hashCode值
@@ -115,7 +115,7 @@ public class RandUtils {
         return s2;
     }
 
-    public static String name(){
+    public static String NAME(){
         /* 598 百家姓 */
         String[] Surname= {"赵","钱","孙","李","周","吴","郑","王","冯","陈","褚","卫","蒋","沈","韩","杨","朱","秦","尤","许",
                 "何","吕","施","张","孔","曹","严","华","金","魏","陶","姜","戚","谢","邹","喻","柏","水","窦","章","云","苏","潘","葛","奚","范","彭","郎",
@@ -199,7 +199,7 @@ public class RandUtils {
             "176","185","186","166"
     };
 
-    public static   String telNum() {
+    public static   String TELNUMBER() {
         String s=YD[num(0,YD.length-1)];
         int num = num(0, 2);
         if (num==1){
@@ -275,7 +275,7 @@ public class RandUtils {
         return calcR[result % 11];
     }
 
-    public static String idCard(){
+    public static String IDCARD(){
         String idNo = getIdNo(true);
         int num = RandUtils.num(0, 1);
         if (num==1){
@@ -284,8 +284,8 @@ public class RandUtils {
         return idNo;
     }
 
-    public static String mail(){
-        String s = telNum();
+    public static String MAIL(){
+        String s = TELNUMBER();
         String[] mailEnd =new String[]{"qq.com","163.com","126.com","126.com","139.com","soho.com"
                 ,"sina.com","aliyun.com","googlemail.com"};
         int num = num(0, mailEnd.length - 1);
